@@ -3,6 +3,7 @@ import 'package:nyxx/nyxx.dart';
 import '../framework/classes/nyxx_settings.dart';
 import '../framework/interfaces/command.dart';
 import '../framework/interfaces/robot.dart';
+import 'middlewares/commands/moderation/kick/kick_command.dart';
 import 'middlewares/commands/utils/server_command.dart';
 import 'settings/robot_settings.dart';
 
@@ -12,7 +13,7 @@ class DiscordRobot extends IRobot {
   final IRobotSettings settings;
 
   @override
-  List<ICommand> commands = [ServerCommand()];
+  List<ICommand> commands = [ServerCommand(), KickCommand()];
 
   DiscordRobot(this.settings);
 
