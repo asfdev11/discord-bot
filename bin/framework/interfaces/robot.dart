@@ -8,6 +8,8 @@ import 'command.dart';
 abstract class IRobot {
   INyxxWebsocket? robot;
 
+  List<ICommand> commands = [];
+
   void initState() {
     if (Env.enableLogs) {
       print('INITIALIZING ${runtimeType.toString()}');
@@ -23,6 +25,7 @@ abstract class IRobot {
 
   void close([ISettingsException? exception]) {
     if (Env.enableLogs) {
+      robot?.dispose();
       if (exception != null) {
         print(
             'CLOSING ${runtimeType.toString()} BECAUSE AN EXCEPTION OCCURRED\nMESSAGE: ${exception.message}');
@@ -32,7 +35,15 @@ abstract class IRobot {
     }
   }
 
-  void add(ICommand command) {
+  void startRobot(INyxxWebsocket websocket) {
+    robot = websocket;
+    for (var command in commands) {
+      _add(command);
+    }
+    robot!.connect();
+  }
+
+  void _add(ICommand command) {
     if (robot != null) {
       robot!.eventsWs.onMessageReceived.listen((event) {
         if (event.message.author.bot) return;
