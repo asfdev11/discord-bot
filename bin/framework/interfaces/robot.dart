@@ -52,7 +52,7 @@ abstract class IRobot {
         var args = event.message.content.trim().split(' ');
         var cmd = args[0].substring(1).toLowerCase();
 
-        if (cmd == command.name) {
+        if (cmd == command.name || command.aliases.contains(cmd)) {
           command.listen(event);
         }
       });
