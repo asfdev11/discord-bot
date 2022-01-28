@@ -1,4 +1,5 @@
 import '../../../env.dart';
+import '../errors/settings_errors.dart';
 
 abstract class IRobot {
   void initState() {
@@ -14,9 +15,14 @@ abstract class IRobot {
     }
   }
 
-  void close() {
+  void close([ISettingsException? exception]) {
     if (Env.enableLogs) {
-      print('CLOSING ${runtimeType.toString()}');
+      if (exception != null) {
+        print(
+            'CLOSING ${runtimeType.toString()} BECAUSE AN EXCEPTION OCCURRED\nMESSAGE: ${exception.message}');
+      } else {
+        print('CLOSING ${runtimeType.toString()}');
+      }
     }
   }
 }

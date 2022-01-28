@@ -13,4 +13,6 @@ environment:
 dev_dependencies:
   lints: ^1.0.0
 dependencies: 
+  dartz: ^0.10.1
   nyxx: ^3.2.4
+  shelf_modular: ^1.0.1

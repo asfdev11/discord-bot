@@ -2,7 +2,7 @@ import 'package:nyxx/nyxx.dart';
 
 class NyxxSettings {
   final String token;
-  final GatewayIntents gatewayIntents;
+  final int gatewayIntents;
   final List<BasePlugin> plugins;
 
   NyxxSettings(
