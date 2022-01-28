@@ -10,7 +10,7 @@ class ServerCommand implements ICommand {
   List<String> get aliases => [];
 
   @override
-  void listen(IMessageReceivedEvent event, [List<String>? args]) {
+  Future<void> listen(IMessageReceivedEvent event, [List<String>? args]) async {
     print('Received command to server from guild ${event.message.guild!.id}');
   }
 }

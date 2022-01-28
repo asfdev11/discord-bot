@@ -6,5 +6,5 @@ abstract class ICommand {
 
   ICommand(this.name, [this.aliases = const []]);
 
-  void listen(IMessageReceivedEvent event, [List<String>? args]);
+  Future<void> listen(IMessageReceivedEvent event, [List<String>? args]);
 }
